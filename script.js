@@ -1,19 +1,43 @@
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    document.querySelector('.layer-1').style.transform = `translateY(${scrollY * 0.25}px)`;
-    document.querySelector('.layer-2').style.transform = `translateY(${scrollY * 0.5}px)`;
-    document.querySelector('.layer-3').style.transform = `translateY(${scrollY * 0.75}px)`;
-    document.querySelector('.layer-4').style.transform = `translateY(${scrollY * 0.3}px)`; // Clouds
-    document.querySelector('.layer-5').style.transform = `translateY(${scrollY * 0.2}px)`; // Mountains
-    
-    document.querySelector('.rock-1').style.transform = `translateY(${400 - scrollY * 0.8}px)`;
-    document.querySelector('.rock-2').style.transform = `translateY(${200 - scrollY * 0.6}px)`;
-    document.querySelector('.rock-3').style.transform = `translateY(${500 - scrollY * 0.4}px)`;
-    document.querySelector('.rock-4').style.transform = `translateY(${600 - scrollY * 0.5}px)`;
-    document.querySelector('.rock-5').style.transform = `translateY(${600 - scrollY * 0.7}px)`;
-    document.querySelector('.rock-6').style.transform = `translateY(${400 - scrollY * 0.7}px)`;
-    document.querySelector('.rock-7').style.transform = `translateY(${600 - scrollY * 0.5}px)`;
-    document.querySelector('.rock-8').style.transform = `translateY(${200 - scrollY * 0.2}px)`;
-    document.querySelector('.rock-9').style.transform = `translateY(${200 - scrollY * 0.4}px)`;
+$(window).bind('scroll',function(e){
+    parallaxScroll();
+    animateBird();
+    checkFadeIn();
 });
+
+function parallaxScroll(){
+   var scrolled = $(window).scrollTop(); 
+    
+   $('.layer-1').css('top',(0-(scrolled*.25))+'px');
+   $('.layer-2').css('top',(0-(scrolled*.5))+'px');
+   $('.layer-3').css('top',(0-(scrolled*.75))+'px');
+   $('.layer-4').css('top',(0-(scrolled*.85))+'px');  // New layer
+   $('.layer-5').css('top',(0-(scrolled*.95))+'px');  // New layer
+    
+   $('.rock-1').css('top',(400-(scrolled*.8))+'px');
+   $('.rock-2').css('top',(200-(scrolled*.6))+'px');
+   $('.rock-3').css('top',(500-(scrolled*.4))+'px'); 
+   $('.rock-4').css('top',(600-(scrolled*.5))+'px'); 
+   $('.rock-5').css('top',(600-(scrolled*.7))+'px'); 
+   $('.rock-6').css('top',(400-(scrolled*.7))+'px'); 
+   $('.rock-7').css('top',(600-(scrolled*.5))+'px'); 
+   $('.rock-8').css('top',(200-(scrolled*.2))+'px');
+   $('.rock-9').css('top',(200-(scrolled*.4))+'px');
+}
+
+// New function for bird animation
+function animateBird() {
+    var scrolled = $(window).scrollTop();
+    $('.bird').css({
+        'transform': `translate(${scrolled * 0.5}px, ${Math.sin(scrolled * 0.01) * 50}px)`
+    });
+}
+
+// New function for fade-in text
+function checkFadeIn() {
+    var scrolled = $(window).scrollTop();
+    if (scrolled > 100) {
+        $('.fade-in-text').addClass('visible');
+    } else {
+        $('.fade-in-text').removeClass('visible');
+    }
+}
