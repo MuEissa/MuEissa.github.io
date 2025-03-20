@@ -67,6 +67,48 @@ body {
   z-index: 90;
 }
 
+.layer-4 {
+    background-image: linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.9) 80%, #020202), 
+                      url("https://i.imgur.com/clouds.png"); /* Add your cloud image URL */
+    z-index: 95;
+}
+
+.layer-5 {
+    background-image: linear-gradient(to bottom,transparent 30%,rgba(0,0,0,0.85) 80%, #020202), 
+                      url("https://i.imgur.com/mountains.png"); /* Add your mountain image URL */
+    z-index: 100;
+}
+
+.bird {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://i.imgur.com/bird.png'); /* Add your bird image URL */
+    background-size: contain;
+    top: 20%;
+    left: 10%;
+    z-index: 1000;
+    transition: transform 0.3s ease-out;
+}
+
+.fade-in-text {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    z-index: 1000;
+}
+
+.fade-in-text.visible {
+    opacity: 1;
+}
+
+
 /* Text & Heading */
 h1 {
   position: absolute;
